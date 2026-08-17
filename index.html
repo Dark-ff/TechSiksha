@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1f7a5c">
+    <meta
+      name="description"
+      content="Offline-friendly Computer Literacy Field Project learning site for Class 6 and 7 students."
+    >
+    <title>Computer Literacy Field Project</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to content</a>
+    <header class="site-header">
+      <div class="brand" aria-label="Computer Literacy">
+        <span class="brand-mark" aria-hidden="true">CL</span>
+        <span>
+          <strong>Computer Literacy</strong>
+          <small>Class 6 and 7 Field Project</small>
+        </span>
+      </div>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#/" data-route="/">Home</a>
+        <a href="#/learn" data-route="/learn">Learn</a>
+        <a href="#/practice" data-route="/practice">Practice</a>
+        <a href="#/progress" data-route="/progress">Progress</a>
+        <a href="#/final" data-route="/final">Final Project</a>
+        <a href="#/about" data-route="/about">About</a>
+      </nav>
+    </header>
+
+    <main id="app" tabindex="-1"></main>
+
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+      <a href="#/" data-route="/">Home</a>
+      <a href="#/learn" data-route="/learn">Learn</a>
+      <a href="#/practice" data-route="/practice">Practice</a>
+      <a href="#/progress" data-route="/progress">Progress</a>
+      <a href="#/final" data-route="/final">Project</a>
+    </nav>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

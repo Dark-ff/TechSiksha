@@ -1,0 +1,9 @@
+{
+  "name": "Computer Literacy Field Project",
+  "short_name": "Computer Literacy",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f8f5",
+  "theme_color": "#1f7a5c",
+  "description": "Offline-friendly Computer Literacy learning site for Class 6 and 7 students."
+}
