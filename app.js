@@ -472,6 +472,22 @@
     ].join(""));
   }
 
+  function renderStudy() {
+    setPage([
+      '<section class="page-head">',
+      '<p class="eyebrow">Study resources</p>',
+      '<h1>Study Materials</h1>',
+      '<p>Printable checklists, revision questions, glossary, and teacher tips extracted from the handbook.</p>',
+      '</section>',
+      '<section class="content-main wide">',
+      panel('Lessons', '<ul class="clean-list">' + data.lessons.map(function (l) { return '<li><strong>' + escapeHtml(l.shortTitle) + '</strong>: ' + escapeHtml(l.summary) + '</li>'; }).join('') + '</ul>'),
+      panel('Glossary', '<ul class="clean-list">' + data.glossary.map(function (item) { return '<li><strong>' + escapeHtml(item[0]) + '</strong>: ' + escapeHtml(item[1]) + '</li>'; }).join('') + '</ul>'),
+      panel('Final project checklist', list(data.finalProject.checklist)),
+      panel('Teacher tips', list(data.teacherTips || [])),
+      '</section>'
+    ].join(''));
+  }
+
   function checkQuiz(lessonId) {
     var lesson = byId(lessonId);
     if (!lesson) return;
@@ -555,13 +571,14 @@
     if (route.name === "practice") return renderPractice();
     if (route.name === "progress") return renderProgress();
     if (route.name === "final") return renderFinal();
+    if (route.name === "study") return renderStudy();
     if (route.name === "about") return renderAbout();
     return renderHome();
   }
 
   document.addEventListener("click", handleAction);
   document.addEventListener("change", handleChange);
-  window.addEventListener("hashchange", render);
+  window.addEventListener("hashchange", function () { render(); enhanceUI(); });
 
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
@@ -570,4 +587,46 @@
   }
 
   render();
+  enhanceUI();
+
+  // Small UI enhancement helpers: reveal-on-scroll, hero entrance, and micro-interactions.
+  function enhanceUI() {
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      // Hero entrance
+      var heroLeft = document.querySelector('.hero-grid > div:first-child');
+      var heroPanel = document.querySelector('.hero-panel');
+      if (heroLeft) {
+        heroLeft.classList.add('hero-entrance');
+        requestAnimationFrame(function () { heroLeft.classList.add('in-view'); });
+      }
+      if (heroPanel) {
+        heroPanel.classList.add('hero-entrance');
+        requestAnimationFrame(function () { heroPanel.classList.add('in-view'); });
+      }
+
+      // Reveal on scroll for panels and cards
+      var revealTargets = Array.from(document.querySelectorAll('.panel, .card, .concept-card, .activity-card, .lesson-card'));
+      revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+      }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+      revealTargets.forEach(function (el) { io.observe(el); });
+
+      // Tiny hover improvement for buttons on pointer-capable devices
+      if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+        document.querySelectorAll('.button').forEach(function (b) {
+          b.addEventListener('pointerenter', function () { b.style.transform = 'translateY(-2px)'; });
+          b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+        });
+      }
+    } catch (e) {
+      // fail silently — enhancements should not break the app
+      console.warn('UI enhance failed', e);
+    }
+  }
 })();

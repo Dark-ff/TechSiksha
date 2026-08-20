@@ -650,6 +650,13 @@ window.COURSE_DATA = {
       "I opened the saved files to check them"
     ]
   },
+  teacherTips: [
+    "Interactive mouse & keyboard pass-around to reduce fear and build confidence",
+    "Blackboard visuals first, then the computer screen — sketch concepts on the board before opening the lab",
+    "Use relatable datasets (class names, village market items) when practicing Excel",
+    "Keep a small printed checklist on each desk so students can self-check",
+    "Demonstrate once, then circulate and help students individually; celebrate completed work"
+  ],
   selfAssessment: [
     "I can identify computer parts",
     "I can use the mouse properly",
