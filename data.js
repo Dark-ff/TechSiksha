@@ -72,6 +72,78 @@ window.COURSE_DATA = {
           answer: 2,
           explanation: "Students should not touch wires. Ask the teacher or lab in-charge."
         }
+      ],
+      /* Enhanced study content for Lecture 1 (fundamentals) */
+      estimatedTime: "15 min",
+      difficulty: "Beginner",
+      detailedNotes: [
+        {
+          title: "The IPO cycle",
+          paragraphs: [
+            "What it is: A simple model — Input → Process → Output — that describes how a computer works.",
+            "Why it matters: Understanding IPO helps you predict how data moves through a computer and why results change when inputs change.",
+            "How it works: Input devices (keyboard, mouse, mic) send data; the CPU and software process that data; output devices (monitor, speaker, printer) show the result."
+          ],
+          examples: ["Type a name (Input) → computer arranges letters (Process) → name appears on screen (Output)"]
+        },
+        {
+          title: "Types of computers",
+          paragraphs: [
+            "Desktops stay on a table and need constant power — common in school labs.",
+            "Laptops are portable and have batteries; tablets and smartphones use touch screens.",
+            "Supercomputers are very large and used for tasks like weather prediction — you will not use these in class, but the idea shows scale and purpose."
+          ]
+        },
+        {
+          title: "Hardware vs Software",
+          paragraphs: [
+            "Hardware are the physical parts you can touch: monitor, keyboard, mouse, CPU cabinet, cables.",
+            "Software are the programs inside the computer that tell it what to do: Windows, Word, Paint, Scratch, games.",
+            "Important point: software needs hardware to run, and hardware needs software to be useful."
+          ]
+        },
+        {
+          title: "Common input and output devices",
+          paragraphs: [
+            "Input: keyboard, mouse, microphone — they let you tell the computer what to do.",
+            "Output: monitor, printer, speakers — they show computer results.",
+            "Tip: Practice naming devices in the lab so you can identify them quickly."
+          ]
+        },
+        {
+          title: "Basic lab safety",
+          paragraphs: [
+            "Always save your work before shutting down; never pull power plugs while the computer is on.",
+            "Keep food and drinks away from keyboards and CPUs to avoid damage.",
+            "If something looks wrong (smoke, loose wires), stop and tell the teacher immediately."
+          ]
+        }
+      ],
+      keyTakeaways: [
+        "Computers follow the Input → Process → Output cycle.",
+        "Hardware is physical; software is the instructions running on hardware.",
+        "Common devices: monitor (output), keyboard (input), CPU (processing).",
+        "Always follow lab safety and save work often."
+      ],
+      revision: [
+        "IPO = Input → Process → Output",
+        "Monitor shows output; keyboard gives input",
+        "Hardware = touchable parts; software = programs"
+      ],
+      selfChecks: [
+        "Explain the IPO cycle in one sentence.",
+        "List three input devices and two output devices.",
+        "Describe one safety rule to follow in the lab."
+      ],
+      enhancedQuiz: [
+        { id: "f1-q1", type: "mcq", question: "Which device is mainly used to enter text into a computer?", options: ["Monitor", "Keyboard", "Printer", "Speaker"], answer: 1, explanation: "The keyboard is the primary input device for typing text.", difficulty: "easy", concept: "input" },
+        { id: "f1-q2", type: "mcq", question: "Which of these is an output device?", options: ["Mouse", "Keyboard", "Monitor", "Microphone"], answer: 2, explanation: "Monitor displays pictures and text — it is an output device.", difficulty: "easy", concept: "output" },
+        { id: "f1-q3", type: "mcq", question: "What does CPU stand for and what is its role?", options: ["Central Process Unit - stores files", "Central Processing Unit - does processing", "Computer Processing Unit - is a screen", "Central Power Unit - supplies electricity"], answer: 1, explanation: "CPU = Central Processing Unit; it performs processing (the computer's 'brain').", difficulty: "medium", concept: "process" },
+        { id: "f1-q4", type: "mcq", question: "Which statement is true about software?", options: ["Software is something you can touch", "Software runs on hardware and gives instructions", "Software is always free", "Software is the same as a monitor"], answer: 1, explanation: "Software consists of programs that run on hardware and tell it what to do.", difficulty: "easy", concept: "software" },
+        { id: "f1-q5", type: "mcq", question: "Which action should you take if you see a loose wire in the lab?", options: ["Pull it to fix the problem", "Ignore it", "Tell the teacher or lab in-charge", "Switch off all computers on your own"], answer: 2, explanation: "Students should inform the teacher; do not touch electrical wiring yourself.", difficulty: "medium", concept: "safety" },
+        { id: "f1-q6", type: "mcq", question: "Choose the correct IPO order:", options: ["Process → Input → Output", "Input → Process → Output", "Output → Input → Process", "Input → Output → Process"], answer: 1, explanation: "The correct order is Input, then Processing, then Output.", difficulty: "easy", concept: "ipo" },
+        { id: "f1-q7", type: "mcq", question: "Which is an example of portable computing?", options: ["Desktop", "Supercomputer", "Laptop", "Mainframe"], answer: 2, explanation: "Laptops are portable and have built-in batteries for use away from a fixed power point.", difficulty: "easy", concept: "types" },
+        { id: "f1-q8", type: "mcq", question: "Why should you save your work frequently (Ctrl+S)?", options: ["It makes the computer faster", "It prevents loss of work if power is lost", "It copies the file to another computer", "It is needed to open the file"], answer: 1, explanation: "Saving locks the current work to disk so it is not lost during power outages or crashes.", difficulty: "medium", concept: "practice" }
       ]
     },
     {
@@ -140,6 +212,78 @@ window.COURSE_DATA = {
           answer: 2,
           explanation: "A meaningful file name helps students and teachers find work later."
         }
+      ],
+      /* Enhanced study content for Lecture 2 (Windows & File Management) */
+      estimatedTime: "20 min",
+      difficulty: "Beginner",
+      detailedNotes: [
+        {
+          title: "Desktop and Windows",
+          paragraphs: [
+            "What it is: The desktop is the main workspace after you sign in. Windows are the movable boxes that show programs and files.",
+            "Why it matters: Knowing how to move, resize, and switch windows helps you work faster and avoids accidental data loss."
+          ],
+          examples: ["Open two windows and switch between them to copy text from one document to another."]
+        },
+        {
+          title: "Files and Folders",
+          paragraphs: [
+            "Files store individual pieces of work (documents, pictures). Folders hold related files so they are easier to find.",
+            "Good practice: Use clear file names and place similar files in the same folder (for example: ComputerPractice/MathLesson1.docx)."
+          ]
+        },
+        {
+          title: "Save vs Save As",
+          paragraphs: [
+            "Save updates the same file. Save As creates a new file with a new name or location.",
+            "Use Save As when you want to keep the original and make a changed copy."
+          ]
+        },
+        {
+          title: "Copy, Move, Rename, Delete",
+          paragraphs: [
+            "Copy creates another version in the chosen location; Move changes the file's location without leaving the original behind.",
+            "Rename gives a file a clearer name; delete removes a file — only delete when sure."
+          ],
+          steps: [
+            "Select file → Right-click → Copy → Paste in destination",
+            "Select file → Drag to new folder (move) or Cut and Paste",
+            "Right-click → Rename → Type new name",
+            "Right-click → Delete → Check Recycle Bin before emptying"
+          ]
+        },
+        {
+          title: "Useful keyboard shortcuts",
+          paragraphs: [
+            "Ctrl+C = Copy, Ctrl+V = Paste, Ctrl+X = Cut, Ctrl+S = Save, Ctrl+Z = Undo, Alt+Tab = Switch windows.",
+            "Practice these to speed up routine tasks."
+          ]
+        }
+      ],
+      keyTakeaways: [
+        "Folders keep related files together; clear file names save time.",
+        "Copy keeps the original; move changes the file's location.",
+        "Use Save As to create a copy with a new name or place."
+      ],
+      revision: [
+        "Copy = make a second file; Move = change file location",
+        "Save updates the same file; Save As creates a new file",
+        "Use clear file names like My_First_Work.docx"
+      ],
+      selfChecks: [
+        "Explain the difference between Copy and Move.",
+        "When should you use Save As instead of Save?",
+        "List three keyboard shortcuts that save time."
+      ],
+      enhancedQuiz: [
+        { id: "w2-q1", type: "mcq", question: "Which command creates another file while keeping the original in the same place?", options: ["Move", "Delete", "Copy", "Rename"], answer: 2, explanation: "Copy creates a second file and keeps the original.", difficulty: "easy", concept: "file-management" },
+        { id: "w2-q2", type: "mcq", question: "When should you use Save As?", options: ["To overwrite the existing file", "To create a new file with a different name or location", "To delete a file", "To print the file"], answer: 1, explanation: "Save As creates a new file instead of overwriting the original.", difficulty: "medium", concept: "save" },
+        { id: "w2-q3", type: "mcq", question: "Which keyboard shortcut copies selected items?", options: ["Ctrl+V", "Ctrl+C", "Ctrl+S", "Alt+F4"], answer: 1, explanation: "Ctrl+C copies the selected item to the clipboard.", difficulty: "easy", concept: "shortcuts" },
+        { id: "w2-q4", type: "mcq", question: "Which filename is best for saving a school assignment?", options: ["doc1", "My_First_Work_Math", "asdf", "image"], answer: 1, explanation: "A clear descriptive name helps teachers and students find the file later.", difficulty: "easy", concept: "naming" },
+        { id: "w2-q5", type: "mcq", question: "What does Alt+Tab do?", options: ["Closes the current window", "Switches between open windows", "Opens the Start menu", "Saves the file"], answer: 1, explanation: "Alt+Tab switches quickly between open windows.", difficulty: "medium", concept: "windows" },
+        { id: "w2-q6", type: "mcq", question: "If you accidentally delete a file, where can you first look to recover it?", options: ["Recycle Bin", "C:\\ drive root", "Internet", "Printer tray"], answer: 0, explanation: "The Recycle Bin holds deleted files until it is emptied.", difficulty: "easy", concept: "safety" },
+        { id: "w2-q7", type: "mcq", question: "Which action moves a file to a different folder without leaving a copy behind?", options: ["Copy", "Move", "Rename", "Open"], answer: 1, explanation: "Move transfers the file to a new location; no duplicate remains in the original place.", difficulty: "easy", concept: "file-management" },
+        { id: "w2-q8", type: "mcq", question: "Why is organizing files in folders important?", options: ["It makes the computer faster", "It helps find work quickly", "It deletes old files automatically", "It changes file content"], answer: 1, explanation: "Organized folders make it faster to locate and manage files.", difficulty: "medium", concept: "organization" }
       ]
     },
     {
@@ -211,6 +355,73 @@ window.COURSE_DATA = {
           answer: 0,
           explanation: "Bullets and numbered lists are made for short points."
         }
+      ],
+      /* Enhanced study content for Lecture 3 (Microsoft Word) */
+      estimatedTime: "25 min",
+      difficulty: "Beginner",
+      detailedNotes: [
+        {
+          title: "Typing and correcting text",
+          paragraphs: [
+            "What it is: Entering text and using Backspace, Delete, and selection to correct mistakes.",
+            "Why it matters: Efficient correction keeps writing clean and reduces rewriting time.",
+            "How to practice: Type a short paragraph, then use selection + Delete or Backspace to edit; practice Ctrl+Z to undo mistakes."
+          ]
+        },
+        {
+          title: "Basic formatting",
+          paragraphs: [
+            "Bold, italic, and underline help make parts of your text stand out — use them sparingly for clarity.",
+            "Font size, font colour, and alignment change how readable and formal the document appears.",
+            "Important: Formatting should improve clarity, not distract the reader."
+          ]
+        },
+        {
+          title: "Lists and tables",
+          paragraphs: [
+            "Use bulleted or numbered lists for short points. Tables are for structured information in rows and columns.",
+            "Example: A 2x2 table can present pairs of related information such as Item and Quantity."
+          ]
+        },
+        {
+          title: "Page setup and saving",
+          paragraphs: [
+            "Headers, footers, page numbers, margins, and line spacing control how the document looks when printed.",
+            "Always save with a clear file name before printing or closing (use Ctrl+S frequently)."
+          ]
+        },
+        {
+          title: "Common mistakes",
+          paragraphs: [
+            "Over-formatting: too many fonts, colours, and sizes can confuse the reader.",
+            "Not saving often: unsaved work can be lost during crashes or power loss."
+          ]
+        }
+      ],
+      keyTakeaways: [
+        "Formatting improves clarity — use bold/italic/underline sparingly.",
+        "Lists are for points; tables are for structured rows and columns.",
+        "Save before closing and learn simple page setup options."
+      ],
+      revision: [
+        "Bold makes text stronger; Italic slants text; Underline draws a line below text.",
+        "A 2x2 table has 4 cells.",
+        "Center the title and use larger font size for headings."
+      ],
+      selfChecks: [
+        "Describe one reason to use bold text.",
+        "How many cells are in a 2-column by 3-row table?",
+        "What shortcut saves your work quickly?"
+      ],
+      enhancedQuiz: [
+        { id: "wd-q1", type: "mcq", question: "Which formatting makes text thicker and more noticeable?", options: ["Underline", "Italic", "Bold", "Margin change"], answer: 2, explanation: "Bold makes text thicker and more noticeable.", difficulty: "easy", concept: "formatting" },
+        { id: "wd-q2", type: "mcq", question: "How many cells are in a 2-column, 2-row table?", options: ["2", "3", "4", "1"], answer: 2, explanation: "2 columns × 2 rows = 4 cells.", difficulty: "easy", concept: "tables" },
+        { id: "wd-q3", type: "mcq", question: "Which shortcut saves a document quickly?", options: ["Ctrl+P", "Ctrl+S", "Ctrl+Z", "Ctrl+X"], answer: 1, explanation: "Ctrl+S saves the current document.", difficulty: "easy", concept: "saving" },
+        { id: "wd-q4", type: "mcq", question: "When should you use a table instead of a list?", options: ["For one sentence", "For structured rows and columns of related data", "For a poem", "To change page margins"], answer: 1, explanation: "Tables present structured information in rows and columns.", difficulty: "medium", concept: "tables" },
+        { id: "wd-q5", type: "mcq", question: "Which alignment centres text on the page?", options: ["Left", "Right", "Centre", "Justify"], answer: 2, explanation: "Centre alignment places text in the middle of the line.", difficulty: "easy", concept: "alignment" },
+        { id: "wd-q6", type: "mcq", question: "What is a common mistake when formatting documents?", options: ["Using consistent headings", "Saving often", "Using many different fonts and colours", "Using lists for points"], answer: 2, explanation: "Using many fonts and colours can make a document hard to read.", difficulty: "medium", concept: "best-practice" },
+        { id: "wd-q7", type: "mcq", question: "Which feature helps you place page numbers and small text at the top or bottom?", options: ["Header and Footer", "Table", "Bold", "Margins"], answer: 0, explanation: "Headers and footers hold page numbers and small repeated text.", difficulty: "medium", concept: "page-setup" },
+        { id: "wd-q8", type: "mcq", question: "Why should the title often be larger and centred?", options: ["To use more ink", "To make the document look formal and clear", "To make the file size bigger", "To prevent saving"], answer: 1, explanation: "A centered, larger title helps the reader see the main subject quickly.", difficulty: "medium", concept: "presentation" }
       ]
     },
     {
