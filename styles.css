@@ -114,7 +114,7 @@ a.button {
 }
 
 .top-nav {
-  display: flex;
+  display: flex; 
   align-items: center;
   gap: 0.25rem;
 }
@@ -765,3 +765,329 @@ th {
     width: 100%;
   }
 }
+
+/* === NEW LEARNING FLOW & SLIDESHOW STYLES === */
+
+.lesson-flow-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.8rem;
+  margin: 1rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 75px;
+  z-index: 9;
+}
+
+.lesson-flow-nav a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--soft-green);
+  color: var(--green-dark);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.lesson-flow-nav a:hover {
+  background: var(--green);
+  color: white;
+}
+
+.flow-section {
+  padding: 2.5rem 0;
+  border-bottom: 2px dashed var(--line);
+}
+
+.flow-section:last-child {
+  border-bottom: none;
+}
+
+.flow-section .section-heading h2 {
+  color: var(--green-dark);
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.flow-section .section-heading span {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: bold;
+}
+
+/* Slide Viewer */
+.slide-viewer {
+  background: var(--ink);
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  min-height: 400px;
+}
+
+.slide-viewer:fullscreen {
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+.slide-viewer:-webkit-full-screen {
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.slide-counter {
+  font-weight: bold;
+  color: var(--soft-green);
+  font-size: 1.1rem;
+}
+
+.slide-header .button.ghost {
+  border-color: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.slide-header .button.ghost:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+}
+
+.slide-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--yellow);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.slide-points {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.slide-points li {
+  margin-bottom: 1rem;
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.slide-controls .button {
+  background: var(--green);
+  color: white;
+  min-width: 120px;
+  font-size: 1.1rem;
+}
+
+.slide-controls .button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.slide-controls .button:not(:disabled):hover {
+  background: var(--green-dark);
+}
+
+/* Quiz Additions */
+.quiz-revision-suggestion {
+  margin-top: 1.5rem;
+}
+.success-msg, .warning-msg, .error-msg {
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.success-msg { background: #e8f4ee; color: #15533f; border: 1px solid #1f7a5c; }
+.warning-msg { background: #fff4cf; color: #6b4b00; border: 1px solid #f1c453; }
+.error-msg   { background: #fff0f0; color: #b84040; border: 1px solid #f1c7c7; }
+
+/* === NEW LEARNING FLOW & SLIDESHOW STYLES === */
+
+.lesson-flow-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: white;
+  padding: 0.8rem;
+  margin: 1rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 75px;
+  z-index: 9;
+}
+
+.lesson-flow-nav a {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--soft-green);
+  color: var(--green-dark);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.lesson-flow-nav a:hover {
+  background: var(--green);
+  color: white;
+}
+
+.flow-section {
+  padding: 2.5rem 0;
+  border-bottom: 2px dashed var(--line);
+}
+
+.flow-section:last-child {
+  border-bottom: none;
+}
+
+.flow-section .section-heading h2 {
+  color: var(--green-dark);
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.flow-section .section-heading span {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: bold;
+}
+
+/* Slide Viewer */
+.slide-viewer {
+  background: var(--ink);
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  min-height: 400px;
+}
+
+.slide-viewer:fullscreen {
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+.slide-viewer:-webkit-full-screen {
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.slide-counter {
+  font-weight: bold;
+  color: var(--soft-green);
+  font-size: 1.1rem;
+}
+
+.slide-header .button.ghost {
+  border-color: rgba(255,255,255,0.3);
+  color: white;
+}
+
+.slide-header .button.ghost:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+}
+
+.slide-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--yellow);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.slide-points {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.slide-points li {
+  margin-bottom: 1rem;
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.slide-controls .button {
+  background: var(--green);
+  color: white;
+  min-width: 120px;
+  font-size: 1.1rem;
+}
+
+.slide-controls .button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.slide-controls .button:not(:disabled):hover {
+  background: var(--green-dark);
+}
+
+/* Quiz Additions */
+.quiz-revision-suggestion {
+  margin-top: 1.5rem;
+}
+.success-msg, .warning-msg, .error-msg {
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.success-msg { background: #e8f4ee; color: #15533f; border: 1px solid #1f7a5c; }
+.warning-msg { background: #fff4cf; color: #6b4b00; border: 1px solid #f1c453; }
+.error-msg   { background: #fff0f0; color: #b84040; border: 1px solid #f1c7c7; }

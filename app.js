@@ -255,6 +255,14 @@
       return activity.lessonId === lesson.id;
     });
     var isComplete = progress.completedLessons.includes(lesson.id);
+    
+    // Store current slide index globally for simple slideshow logic
+    window.currentSlideIndex = window.currentSlideIndex || 0;
+    if (window.currentLessonId !== lesson.id) {
+        window.currentSlideIndex = 0;
+        window.currentLessonId = lesson.id;
+    }
+
     setPage([
       '<article class="lesson-page">',
       '<div class="lesson-hero">',
@@ -264,17 +272,61 @@
       '<p class="lead">' + escapeHtml(lesson.summary) + '</p>',
       '<button class="button ' + (isComplete ? "secondary" : "primary") + '" data-action="toggle-lesson" data-id="' + lesson.id + '">' + (isComplete ? "Mark as not complete" : "Mark lesson complete") + '</button>',
       '</div>',
+      
+      '<div class="lesson-flow-nav">',
+      '<a href="#section-learn">Learn</a>',
+      '<a href="#section-explore">Explore</a>',
+      '<a href="#section-practice">Practice</a>',
+      '<a href="#section-quiz">Quiz</a>',
+      '<a href="#section-revise">Revise</a>',
+      '</div>',
+      
       '<section class="content-band analogy"><h2>Village example</h2><p>' + escapeHtml(lesson.villageExample) + '</p></section>',
+      
       '<section class="content-grid">',
       '<div class="content-main">',
+      
+      // LEARN SECTION
+      '<div id="section-learn" class="flow-section">',
+      '<div class="section-heading"><h2>Learn</h2><span>Detailed Notes</span></div>',
+      panel("Introduction", '<p>' + escapeHtml(lesson.introduction || "") + '</p>'),
       panel("Learning goals", list(lesson.objectives)),
+      panel("Detailed Explanation", (lesson.detailedExplanation || []).map(function(p){ return '<p>' + escapeHtml(p) + '</p>'; }).join("")),
       panel("Key ideas", '<div class="concept-grid">' + lesson.concepts.map(conceptCard).join("") + '</div>'),
+      panel("Practical Examples", list(lesson.practicalExamples || [])),
+      panel("Common Mistakes", list(lesson.commonMistakes || [])),
       panel(lesson.stepsTitle, orderedList(lesson.steps)),
+      '</div>',
+      
+      // EXPLORE SECTION
+      '<div id="section-explore" class="flow-section">',
+      '<div class="section-heading"><h2>Explore</h2><span>Classroom Slides</span></div>',
+      renderSlideshow(lesson),
+      '</div>',
+      
+      // PRACTICE SECTION
+      '<div id="section-practice" class="flow-section">',
+      '<div class="section-heading"><h2>Practice</h2><span>Try it yourself</span></div>',
+      panel("Activities", activities.map(activityCard).join("")),
       flowPanel(lesson.visual),
-      panel("Try it yourself", activities.map(activityCard).join("")),
-      panel("Quick recap", list(lesson.recap)),
+      '</div>',
+      
+      // QUIZ SECTION
+      '<div id="section-quiz" class="flow-section">',
+      '<div class="section-heading"><h2>Quiz</h2><span>Check your understanding</span></div>',
       quizPanel(lesson),
       '</div>',
+      
+      // REVISE SECTION
+      '<div id="section-revise" class="flow-section">',
+      '<div class="section-heading"><h2>Revise</h2><span>Summary & Review</span></div>',
+      panel("Quick Revision", list(lesson.quickRevision || [])),
+      panel("Practice Questions (Think about these)", list(lesson.practiceQuestions || [])),
+      panel("Did You Know?", '<p><strong>💡 </strong> ' + escapeHtml(lesson.didYouKnow || "") + '</p>'),
+      '</div>',
+      
+      '</div>', // end content-main
+      
       '<aside class="side-panel">',
       '<h2>Lesson progress</h2>',
       '<p>Status: <strong>' + (isComplete ? "Completed" : "In progress") + '</strong></p>',
@@ -285,6 +337,30 @@
       '</section>',
       '</article>'
     ].join(""));
+  }
+  
+  function renderSlideshow(lesson) {
+    if (!lesson.slides || lesson.slides.length === 0) return '<p>No slides available.</p>';
+    var idx = window.currentSlideIndex || 0;
+    var slide = lesson.slides[idx];
+    return [
+      '<div class="slide-viewer" id="slideViewer">',
+      '<div class="slide-header">',
+      '<span class="slide-counter">Slide ' + (idx + 1) + ' of ' + lesson.slides.length + '</span>',
+      '<button class="button small ghost" data-action="toggle-fullscreen">Full Screen</button>',
+      '</div>',
+      '<div class="slide-content">',
+      '<h3 class="slide-title">' + escapeHtml(slide.title) + '</h3>',
+      '<ul class="slide-points">',
+      slide.points.map(function(p){ return '<li>' + escapeHtml(p) + '</li>'; }).join(""),
+      '</ul>',
+      '</div>',
+      '<div class="slide-controls">',
+      '<button class="button" data-action="prev-slide" ' + (idx === 0 ? "disabled" : "") + '>Previous</button>',
+      '<button class="button" data-action="next-slide" ' + (idx === lesson.slides.length - 1 ? "disabled" : "") + '>Next</button>',
+      '</div>',
+      '</div>'
+    ].join("");
   }
 
   function panel(title, body) {
@@ -331,8 +407,7 @@
 
   function quizPanel(lesson) {
     return [
-      '<section class="panel quiz-panel" data-quiz="' + lesson.id + '">',
-      '<div class="section-heading"><h2>Quiz</h2><span>' + lesson.quiz.length + ' questions</span></div>',
+      '<section class="quiz-panel" data-quiz="' + lesson.id + '">',
       lesson.quiz.map(function (question, index) {
         return [
           '<fieldset class="quiz-question">',
@@ -350,6 +425,7 @@
       '<button class="button ghost" data-action="retry-quiz" data-id="' + lesson.id + '">Retry</button>',
       '<span id="quizScore-' + lesson.id + '" class="quiz-score">' + (progress.quizScores[lesson.id] === undefined ? "" : "Best score: " + progress.quizScores[lesson.id] + "%") + '</span>',
       '</div>',
+      '<div id="quizRevisionSuggestion-' + lesson.id + '" class="quiz-revision-suggestion"></div>',
       '</section>'
     ].join("");
   }
@@ -483,7 +559,8 @@
       var ok = answer === question.answer;
       if (ok) correct += 1;
       feedback.className = "quiz-feedback " + (ok ? "correct" : "incorrect");
-      feedback.textContent = (ok ? "Correct. " : "Not yet. ") + question.explanation;
+      var statusIcon = ok ? "✅ " : "❌ ";
+      feedback.innerHTML = '<strong>' + statusIcon + (ok ? "Correct!" : "Incorrect.") + '</strong> ' + escapeHtml(question.explanation);
     });
     var score = Math.round((correct / lesson.quiz.length) * 100);
     var previous = progress.quizScores[lessonId];
@@ -492,6 +569,17 @@
     saveProgress();
     var scoreNode = document.getElementById("quizScore-" + lessonId);
     if (scoreNode) scoreNode.textContent = "Score: " + score + "% | Best: " + progress.quizScores[lessonId] + "%";
+    
+    var suggestionNode = document.getElementById("quizRevisionSuggestion-" + lessonId);
+    if (suggestionNode) {
+        if (score === 100) {
+            suggestionNode.innerHTML = "<p class='success-msg'>Excellent job! You have mastered this topic.</p>";
+        } else if (score >= 60) {
+            suggestionNode.innerHTML = "<p class='warning-msg'>Good effort. Review the incorrect answers and try the practice questions in the Revise section.</p>";
+        } else {
+            suggestionNode.innerHTML = "<p class='error-msg'>Keep trying! Please go back to the <strong>Learn</strong> and <strong>Explore</strong> sections to revise before attempting the quiz again.</p>";
+        }
+    }
   }
 
   function retryQuiz(lessonId) {
@@ -525,6 +613,33 @@
     if (action === "check-quiz") checkQuiz(id);
     if (action === "retry-quiz") retryQuiz(id);
     if (action === "reset") resetProgress();
+    if (action === "next-slide") {
+        var l = byId(window.currentLessonId);
+        if (l && window.currentSlideIndex < l.slides.length - 1) {
+            window.currentSlideIndex++;
+            renderLesson(window.currentLessonId);
+            setTimeout(function() { document.getElementById("slideViewer").scrollIntoView(); }, 0);
+        }
+    }
+    if (action === "prev-slide") {
+        if (window.currentSlideIndex > 0) {
+            window.currentSlideIndex--;
+            renderLesson(window.currentLessonId);
+            setTimeout(function() { document.getElementById("slideViewer").scrollIntoView(); }, 0);
+        }
+    }
+    if (action === "toggle-fullscreen") {
+        var viewer = document.getElementById("slideViewer");
+        if (viewer) {
+            if (!document.fullscreenElement) {
+                viewer.requestFullscreen().catch(err => {
+                    alert("Error attempting to enable fullscreen mode: " + err.message);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+    }
   }
 
   function handleChange(event) {
